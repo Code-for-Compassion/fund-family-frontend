@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios';
 // import { useForm } from "react-hook-form";
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 // import { useRef } from 'react';
 //
 //
@@ -12,42 +12,52 @@ import Modal from 'react-bootstrap/Modal';
 function InterestForm() {
 
   const [show, setShow] = useState(false);
+  // const [data, setData] = useState(false);
+
+  const [email, setemail] = useState("");
+  const [name, setname] = useState("");
+  const [nof, setNoF] = useState("");
+  const [raised_amount, setRm] = useState("");
+  const [fund_breakdown, setFb] = useState("");
+  const [Egypt_fam, setEf] = useState("");
+  const [url, seturl] = useState("");
+
+  const [comments, setcomment] = useState("");
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const InterestModal = () => {
-   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    no_of_family: 0,
-    raised_amount: 0,
-    fund_breakdown: "", 
-    fund_url: "", 
-    comments: "",
-    family_in_egypt: false,
-   });
-  const handleSubmit = (e) => {
-  const API_ENDPOINT = 'https://fund-family-backend-production.up.railway.app/?format=openapi'
-    e.preventDefault()
-      axios({
+
+  const API_ENDPOINT = 'https://fund-family-backend-production.up.railway.app/create_form/'
+
+  const onSubmit = (e)=>{
+    e.preventDefault();
+    console.log(email)
+    console.log("email")
+
+    axios({
       method: 'post',
-      data: formData,
-      axios.post(API_ENDPOINT),
+      url:API_ENDPOINT,
+      data: {
+        name: name,
+        email: email,
+        no_of_family: nof,
+        raised_amount: raised_amount,
+        fund_breakdown: fund_breakdown, 
+        fund_url: url, 
+        comments: comments,
+        family_in_egypt:Egypt_fam,
+      }
     })
-    .then(res=>{
+    .then((res)=>{
         console.log(res);
         console.log(res.data);
-        window.location = "/retrieve" //This line of code will redirect you once the submission is succeed
       })
       
     .catch(function (response) {
-      //handle error
       console.log(response);
-    });;
-    console.log(formData)
+    });
 
-}
-
-
+  }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -59,12 +69,12 @@ function InterestForm() {
           <Modal.Title>Register Your Interest</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={onSubmit}>
             <Row>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="name" placeholder='Enter name' onChange={(e) => setFormData({...formData, name: e.target.value})} value={formData.name}
+              <Form.Control type="text" name="name" placeholder='Enter name' onChange={(e)=>{setname(e.target.value)}}
               />
             </Form.Group>
             </Col>
@@ -76,7 +86,7 @@ function InterestForm() {
                 name="email"
                 placeholder="name@example.com"
                 autoFocus
-                onChange={(e) => setFormData({...formData, email: e.target.value})} value={formData.email}
+                onChange={(e)=>{setemail(e.target.value)}}
               />
             </Form.Group>
             </Col>
@@ -89,7 +99,7 @@ function InterestForm() {
                type="number"
                name="no_of_family"
                placeholder='example: 3'
-               onChange={(e) => setFormData({...formData, no_of_family: e.target.value})} value={formData.no_of_family}
+               onChange={(e)=>{setNoF(e.target.value)}}
               />
             </Form.Group>
             </Col>
@@ -100,7 +110,7 @@ function InterestForm() {
                type="number"
                name="raised_amount"
                placeholder='example: $5000'
-               onChange={(e) => setFormData({...formData, raised_amount: e.target.value})} value={formData.raised_amount}
+               onChange={(e)=>{setRm(e.target.value)}}
               />
             </Form.Group>
             </Col>
@@ -113,7 +123,7 @@ function InterestForm() {
               type="text"
               placeholder='Estimated distribution of funds here'
               name= "fund_breakdown"
-              onChange={(e) => setFormData({...formData, fund_breakdown: e.target.value})} value={formData.fund_breakdown}
+              onChange={(e)=>{setFb(e.target.value)}}
               />
             </Form.Group>
             </Col>
@@ -122,8 +132,8 @@ function InterestForm() {
               <Form.Label>Do you have family in Egypt?</Form.Label>
               <Form.Control
                type="boolean"
-               name="family_in_egypt"
-               onChange={(e) => setFormData({...formData, family_in_egypt: e.target.value})} value={formData.family_in_egypt}
+               name="Egypt_fam"
+               onChange={(e)=>{setEf(e.target.value)}}
               />
              </Form.Group>
              </Col>
@@ -131,11 +141,10 @@ function InterestForm() {
              <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
               <Form.Label>GoFundMe or GiverButters Link (if you have) </Form.Label>
               <Form.Control
-               type="text"
-               name= "fund_url"
+               type="url"
+               name= "url"
                placeholder='must be functioning url'
-               onChange={(e) => setFormData({...formData, fund_url: e.target.value})} value={formData.fund_url}
-
+               onChange={(e)=>{seturl(e.target.value)}}
               />
             </Form.Group>
             <Form.Group
@@ -143,10 +152,11 @@ function InterestForm() {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Questions, comments or additional information</Form.Label>
-              <Form.Control name="comments" as="textarea" rows={3} 
-              onChange={(e) => setFormData({...formData, comments: e.target.value})} value={formData.comments}
-              />
+              <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
             </Form.Group>
+            <Button variant="primary" type="submit">
+            Submit
+          </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -154,13 +164,11 @@ function InterestForm() {
             Close
           </Button>
           {/* {!!formState.status && <div className="py-2">Current form status is: {formState.status}</div>} */}
-          <Button variant="primary" onSubmit={handleSubmit}>
-            Submit
-          </Button>
+
         </Modal.Footer>
       </Modal>
     </>
   );
 }
-}
+
 export default InterestForm;
