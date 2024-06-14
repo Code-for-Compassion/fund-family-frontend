@@ -2,18 +2,13 @@ import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import { useForm } from "react-hook-form";
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
-// import { useRef } from 'react';
-//
-//
+
 
 function InterestForm() {
 
   const [show, setShow] = useState(false);
-  // const [data, setData] = useState(false);
-
   const [email, setemail] = useState("");
   const [name, setname] = useState("");
   const [nof, setNoF] = useState("");
@@ -51,6 +46,7 @@ function InterestForm() {
     .then((res)=>{
         console.log(res);
         console.log(res.data);
+        console.log("success")
       })
       
     .catch(function (response) {
