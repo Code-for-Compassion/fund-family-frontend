@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './App.css'
 import InterestForm from './Interest-form';
+import DonationTab from './donation-tab';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
           <Tab eventKey="donations" title="Donations">
           <Form.Control type="text" placeholder="Search"/>
             Tab content for donations
+            <DonationTab/>
             <div className="card">
           <Button onClick={() => setCount((count) => count + 1)}>
             Donate {count}
