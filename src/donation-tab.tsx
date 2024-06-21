@@ -14,6 +14,7 @@ const fetchData = async () => {
     try {
       const response = await axios.get(ENDPOINT);
       setData(response.data);
+      // console.log(data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -27,7 +28,7 @@ const fetchData = async () => {
     <Row>
     <Card
     >
-        {data.map(elem => (
+        {data.map((elem) => (
             <Card style={{ width: '18rem' }} key={data.indexOf(elem)}>
                 <Card.Body>
                     <CardHeader

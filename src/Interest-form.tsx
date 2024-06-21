@@ -41,6 +41,7 @@ function InterestForm() {
         fund_url: url, 
         comments: comments,
         family_in_egypt:Egypt_fam,
+        // approved: approved
       }
     })
     .then((res)=>{
@@ -57,7 +58,7 @@ function InterestForm() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Submit request to promote your request for aid
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -150,6 +151,12 @@ function InterestForm() {
               <Form.Label>Questions, comments or additional information</Form.Label>
               <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
             </Form.Group>
+            {/* <Form.Group hidden
+               type="boolean"
+               name="approved"
+            >
+              <Form.Label>Approved</Form.Label>
+            </Form.Group> */}
             <Button variant="primary" type="submit">
             Submit
           </Button>

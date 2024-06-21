@@ -25,15 +25,11 @@ function App() {
             Tab content for donations
             <DonationTab/>
             <div className="card">
-          <Button onClick={() => setCount((count) => count + 1)}>
-            Donate {count}
-          </Button>
-            <p>
-              Donations are <code>nonrefundable</code> 
-            </p>
-
             <InterestForm
             />
+            <p>
+              Must have <code>URL</code> to official fundraising site
+            </p>
           </div>
           </Tab>
           <Tab eventKey="senators" title="Senators">
