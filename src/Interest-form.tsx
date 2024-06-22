@@ -58,7 +58,7 @@ function InterestForm() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Submit request to promote your request for aid
+        Submit aid request
       </Button>
 
       <Modal show={show} onHide={handleClose}>

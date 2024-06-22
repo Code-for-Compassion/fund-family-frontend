@@ -14,14 +14,17 @@ const fetchData = async () => {
     try {
       const response = await axios.get(ENDPOINT);
       setData(response.data);
-      // console.log(data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     fetchData();
+
   }, []);
+
+  console.log("hiii", data)
+
 
   return (
     
@@ -37,6 +40,12 @@ const fetchData = async () => {
                     <Card.Body>
                         <CardText>
                             {`URL: ${elem.fund_url}`}
+                        </CardText>
+                        <CardText>
+                            {`Family of ${elem.no_of_family}`}
+                        </CardText>
+                        <CardText>
+                            {`Seeking funds for ${elem.fund_breakdown}`}
                         </CardText>
                     </Card.Body>
                 </Card.Body>
