@@ -11,17 +11,35 @@ function DonationTab() {
 
 const [data, setData] = useState([]);
 const fetchData = async () => {
+    
     try {
       const response = await axios.get(ENDPOINT);
-      setData(response.data);
+        setData(response.data);
+
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     fetchData();
+    console.log(data)
 
   }, []);
+// function fetchData() {
+//     axios.get(ENDPOINT).then(
+//             data => {
+//             let approved = 
+//             let val = formatter.format(dolla);
+//             let str = converter.toWords(dolla);
+//             let cents = converter.toWords(dolla.split('.')[1].substring(0, 2));
+//             if(dolla.split('.') === '01')
+//                 currentStatus = { num: val, word: `${str} dollars and ${cents} cent` };
+//             else
+//                 currentStatus = { num: val, word: `${str} dollars and ${cents} cents` };
+//         });
+//     });
+// }
 
   console.log("hiii", data)
 
@@ -45,7 +63,7 @@ const fetchData = async () => {
                             {`Family of ${elem.no_of_family}`}
                         </CardText>
                         <CardText>
-                            {`Seeking funds for ${elem.fund_breakdown}`}
+                            {`Seeking funds for ${elem.approval}`}
                         </CardText>
                     </Card.Body>
                 </Card.Body>

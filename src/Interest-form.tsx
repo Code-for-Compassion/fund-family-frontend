@@ -16,6 +16,8 @@ function InterestForm() {
   const [fund_breakdown, setFb] = useState("");
   const [Egypt_fam, setEf] = useState("");
   const [url, seturl] = useState("");
+  const [approval, setApproval] = useState("");
+
 
   const [comments, setcomment] = useState("");
   
@@ -41,7 +43,7 @@ function InterestForm() {
         fund_url: url, 
         comments: comments,
         family_in_egypt:Egypt_fam,
-        // approved: approved
+        // approval: approval
       }
     })
     .then((res)=>{
@@ -151,13 +153,15 @@ function InterestForm() {
               <Form.Label>Questions, comments or additional information</Form.Label>
               <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
             </Form.Group>
-            {/* <Form.Group hidden
-               type="boolean"
-               name="approved"
+            <Form.Group
             >
-              <Form.Label>Approved</Form.Label>
-            </Form.Group> */}
-            <Button variant="primary" type="submit">
+              <Form.Control hidden               
+               type="boolean"
+               name="approval"
+               onChange={(e)=>{setApproval(e.target.value)}}
+               />
+            </Form.Group>
+            <Button variant="primary" type="submit"onClick={handleClose}>
             Submit
           </Button>
           </Form>
