@@ -16,7 +16,8 @@ function InterestForm() {
   const [fund_breakdown, setFb] = useState("");
   const [Egypt_fam, setEf] = useState("");
   const [url, seturl] = useState("");
-  const [approval, setApproval] = useState("");
+  //sent with and without setting as state depending on backend
+  const [approval] = useState("");
 
 
   const [comments, setcomment] = useState("");
@@ -27,6 +28,7 @@ function InterestForm() {
   const API_ENDPOINT = 'https://fund-family-backend-production.up.railway.app/create_form/'
 
   const onSubmit = (e)=>{
+    //set approval here to false
     e.preventDefault();
     console.log(email)
     console.log("email")
@@ -43,17 +45,21 @@ function InterestForm() {
         fund_url: url, 
         comments: comments,
         family_in_egypt:Egypt_fam,
-        // approval: approval
+        //sent with and without approval as key/value depending on backend
+        approval: approval
+        // approval: false
       }
     })
-    .then((res)=>{
-        console.log(res);
-        console.log(res.data);
+    .then((response)=>{
+      //then is not hitting under any circumstance therefore must be issues with backend
+        console.log("THEN", response);
+        console.log("THEN + DATA", response.data);
         console.log("success")
       })
       
     .catch(function (response) {
-      console.log(response);
+      console.log("Catch", response.data)
+      // console.error("catch without", error.response.data);
     });
 
   }
@@ -155,11 +161,14 @@ function InterestForm() {
             </Form.Group>
             <Form.Group
             >
-              <Form.Control hidden               
+              <Form.Control hidden              
                type="boolean"
                name="approval"
-               onChange={(e)=>{setApproval(e.target.value)}}
-               />
+              //  Sent with and without setApproval 
+              // tried an onchange here as well 
+               >
+                
+               </Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit"onClick={handleClose}>
             Submit
@@ -170,6 +179,7 @@ function InterestForm() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
+          {/* later validation */}
           {/* {!!formState.status && <div className="py-2">Current form status is: {formState.status}</div>} */}
 
         </Modal.Footer>
