@@ -2,7 +2,8 @@ import { Menu, MenuButton, MenuItems, MenuItem, Transition } from "@headlessui/r
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import {} from '@heroicons/react/24/outline'
 import { Fragment } from "react";
-import { useTranslation } from "react-i18next";
+import i18n from "./i18n";
+// import { useTranslation } from "react-i18next";
 
 
 function classNames(...classes) {
@@ -23,7 +24,7 @@ let countries = [
 ];
 
 const LanguageToggle = () => {
-  const { t, i18n } = useTranslation();
+//   const { t, i18n } = useTranslation();
 
   return (
     <>
