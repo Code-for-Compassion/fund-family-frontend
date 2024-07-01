@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
+import { useTranslation } from "react-i18next";
 
 
 function InterestForm() {
+  const { t } = useTranslation();
 
   const [show, setShow] = useState(false);
   const [email, setemail] = useState("");
@@ -16,7 +18,6 @@ function InterestForm() {
   const [fund_breakdown, setFb] = useState("");
   const [Egypt_fam, setEf] = useState("");
   const [url, seturl] = useState("");
-  //sent with and without setting as state depending on backend
   const [approval] = useState("");
 
 
@@ -28,7 +29,6 @@ function InterestForm() {
   const API_ENDPOINT = 'https://fund-family-backend-production.up.railway.app/create_form/'
 
   const onSubmit = (e)=>{
-    //set approval here to false
     e.preventDefault();
     console.log(email)
     console.log("email")
@@ -45,13 +45,10 @@ function InterestForm() {
         fund_url: url, 
         comments: comments,
         family_in_egypt:Egypt_fam,
-        //sent with and without approval as key/value depending on backend
         approval: approval
-        // approval: false
       }
     })
     .then((response)=>{
-      //then is not hitting under any circumstance therefore must be issues with backend
         console.log("THEN", response);
         console.log("THEN + DATA", response.data);
         console.log("success")
@@ -59,7 +56,6 @@ function InterestForm() {
       
     .catch(function (response) {
       console.log("Catch", response.data)
-      // console.error("catch without", error.response.data);
     });
 
   }
@@ -71,7 +67,7 @@ function InterestForm() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Register Your Interest</Modal.Title>
+          <Modal.Title>{t("hello")} Register Your Interest</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={onSubmit}>
@@ -164,13 +160,12 @@ function InterestForm() {
               <Form.Control hidden              
                type="boolean"
                name="approval"
-              //  Sent with and without setApproval 
-              // tried an onchange here as well 
+
                >
                 
                </Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit"onClick={handleClose}>
+            <Button variant="primary" type="submit">
             Submit
           </Button>
           </Form>
