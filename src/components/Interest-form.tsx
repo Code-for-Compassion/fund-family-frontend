@@ -52,23 +52,24 @@ function InterestForm() {
         console.log("THEN", response);
         console.log("THEN + DATA", response.data);
         console.log("success")
-        handleClose()
+        
       })
       
     .catch(function (response) {
       console.log("Catch", response.data)
     });
+  
 
   }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Submit aid request
+      {t("submitMain")}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{t("hello")} Register Your Interest</Modal.Title>
+          <Modal.Title> Register Your Interest</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={onSubmit}>
@@ -166,12 +167,12 @@ function InterestForm() {
                 
                </Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit">
-            Submit
-          </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
+        <Button variant="primary" type="submit">
+            Submit
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

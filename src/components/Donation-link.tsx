@@ -33,10 +33,11 @@ const fetchData = async () => {
   return (
     <Container>
     <Row>
+    <Col>
     <Card
     >
         {data.map((elem) => (
-            <Card style={{ width: '18rem' }} key={data.indexOf(elem)}>
+            <Card style={{ width: '40vw', alignItems: 'center', alignSelf:'center' }} key={data.indexOf(elem)}>
                 <Card.Body>
                     <CardHeader
                         title={`Name: ${elem.name}`}
@@ -56,6 +57,7 @@ const fetchData = async () => {
              </Card>
         ))}
     </Card>
+    </Col>    
     </Row>
     </Container>
     )}
