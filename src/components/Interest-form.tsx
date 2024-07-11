@@ -4,18 +4,22 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
+import { useTranslation } from "react-i18next";
 
 
 function InterestForm() {
+  const { t } = useTranslation();
 
   const [show, setShow] = useState(false);
   const [email, setemail] = useState("");
-  const [name, setname] = useState("");
+  const [name, setname] = useState("");7 
   const [nof, setNoF] = useState("");
   const [raised_amount, setRm] = useState("");
   const [fund_breakdown, setFb] = useState("");
-  const [Egypt_fam, setEf] = useState("");
+  const [Egypt_fam, setEf] = useState(false);
   const [url, seturl] = useState("");
+  const [approval] = useState("");
+
 
   const [comments, setcomment] = useState("");
   
@@ -41,28 +45,31 @@ function InterestForm() {
         fund_url: url, 
         comments: comments,
         family_in_egypt:Egypt_fam,
+        approval: approval
       }
     })
-    .then((res)=>{
-        console.log(res);
-        console.log(res.data);
+    .then((response)=>{
+        console.log("THEN", response);
+        console.log("THEN + DATA", response.data);
         console.log("success")
+        
       })
       
     .catch(function (response) {
-      console.log(response);
+      console.log("Catch", response.data)
     });
+  
 
   }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      {t("submitMain")}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Register Your Interest</Modal.Title>
+          <Modal.Title> Register Your Interest</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={onSubmit}>
@@ -126,10 +133,11 @@ function InterestForm() {
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
               <Form.Label>Do you have family in Egypt?</Form.Label>
-              <Form.Control
-               type="boolean"
+              <Form.Check
+               type="checkbox"
                name="Egypt_fam"
-               onChange={(e)=>{setEf(e.target.value)}}
+               label='Yes'
+               onChange={(e)=>{(e.target.checked)? setEf(true): setEf(false)}}
               />
              </Form.Group>
              </Col>
@@ -150,15 +158,25 @@ function InterestForm() {
               <Form.Label>Questions, comments or additional information</Form.Label>
               <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
             </Form.Group>
-            <Button variant="primary" type="submit">
-            Submit
-          </Button>
+            <Form.Group
+            >
+              <Form.Control hidden              
+               type="boolean"
+               name="approval"
+               >
+                
+               </Form.Control>
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
+        <Button variant="primary" type="submit">
+            Submit
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
+          {/* later validation */}
           {/* {!!formState.status && <div className="py-2">Current form status is: {formState.status}</div>} */}
 
         </Modal.Footer>
