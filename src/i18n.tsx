@@ -6,18 +6,24 @@ import { initReactI18next } from "react-i18next";
 const fallbackLng = ["en"];
 
 i18n
-  .use(Backend) // used to load data from othe directory
-  .use(LanguageDetector) // detects the current language
+  .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    fallbackLng, // default language
-    detection: {
-      checkWhitelist: true,
-    },
-    debug: false,
-    interpolation: {
-      escapeValue: false, // no need for react. it escapes by default
-    },
+    debug:true,
+    lng: "en", 
+    resources :{
+      en:{
+        translation: {
+          header: "Slice Of Hope"
+        }
+      },
+      ar:{
+        translation: {
+          header: "شريحة من الأمل"
+        }
+      }
+    }
+
   });
 
 export default i18n;

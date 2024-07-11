@@ -52,6 +52,7 @@ function InterestForm() {
         console.log("THEN", response);
         console.log("THEN + DATA", response.data);
         console.log("success")
+        handleClose()
       })
       
     .catch(function (response) {

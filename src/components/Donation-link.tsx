@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardImg, CardText, Col, Row } from 'react-bootstrap';
+import { Card, CardHeader, CardImg, CardText, Col, Container, Row } from 'react-bootstrap';
 // import Button from 'react-bootstrap/Button';
 // import CardBody from 'react-bootstrap';
 import axios from 'axios';
 
 
-function DonationTab() {
+function DonationLink() {
 
  const ENDPOINT =  "https://fund-family-backend-production.up.railway.app/get_only_approved/"
 
 const [data, setData] = useState([]);
 const fetchData = async () => {
-    
     try {
       const response = await axios.get(ENDPOINT);
         setData(response.data);
@@ -26,26 +25,13 @@ const fetchData = async () => {
     console.log(data)
 
   }, []);
-// function fetchData() {
-//     axios.get(ENDPOINT).then(
-//             data => {
-//             let approved = 
-//             let val = formatter.format(dolla);
-//             let str = converter.toWords(dolla);
-//             let cents = converter.toWords(dolla.split('.')[1].substring(0, 2));
-//             if(dolla.split('.') === '01')
-//                 currentStatus = { num: val, word: `${str} dollars and ${cents} cent` };
-//             else
-//                 currentStatus = { num: val, word: `${str} dollars and ${cents} cents` };
-//         });
-//     });
-// }
+
 
   console.log("hiii", data)
 
 
   return (
-    
+    <Container>
     <Row>
     <Card
     >
@@ -71,9 +57,9 @@ const fetchData = async () => {
         ))}
     </Card>
     </Row>
-    
+    </Container>
     )}
 
-export default DonationTab;
+export default DonationLink;
 
 
