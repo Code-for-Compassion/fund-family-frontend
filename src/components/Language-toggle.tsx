@@ -3,6 +3,7 @@ import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import {} from '@heroicons/react/24/outline'
 import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 
 
@@ -16,11 +17,16 @@ const languages = [
     lang: "English",
   },
 ];
-const changeLanguage =(lng) => {
-  i18n.changeLanguage(lng)
-};
+
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
+  const changeLanguage =(lng) => {
+    i18n.changeLanguage(lng)
+  };
+  useEffect(()=>{
+    console.log(i18n.dir())
+    document.body.dir = i18n.dir()}, [i18n,i18n.language])
+
   return (
 <div className="btn-Container">
     {languages.map((lng) => {
@@ -31,6 +37,6 @@ const LanguageToggle = () => {
 
 </div>
   );
-};
+}
 
 export default LanguageToggle;
