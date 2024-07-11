@@ -12,11 +12,11 @@ function InterestForm() {
 
   const [show, setShow] = useState(false);
   const [email, setemail] = useState("");
-  const [name, setname] = useState("");
+  const [name, setname] = useState("");7 
   const [nof, setNoF] = useState("");
   const [raised_amount, setRm] = useState("");
   const [fund_breakdown, setFb] = useState("");
-  const [Egypt_fam, setEf] = useState("");
+  const [Egypt_fam, setEf] = useState(false);
   const [url, seturl] = useState("");
   const [approval] = useState("");
 
@@ -131,10 +131,11 @@ function InterestForm() {
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
               <Form.Label>Do you have family in Egypt?</Form.Label>
-              <Form.Control
-               type="boolean"
+              <Form.Check
+               type="checkbox"
                name="Egypt_fam"
-               onChange={(e)=>{setEf(e.target.value)}}
+               label='Yes'
+               onChange={(e)=>{(e.target.checked)? setEf(true): setEf(false)}}
               />
              </Form.Group>
              </Col>
@@ -160,7 +161,6 @@ function InterestForm() {
               <Form.Control hidden              
                type="boolean"
                name="approval"
-
                >
                 
                </Form.Control>
