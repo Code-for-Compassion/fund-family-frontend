@@ -37,7 +37,7 @@ const fetchData = async () => {
     <Card
     >
         {data.map((elem) => (
-            <Card style={{ width: '40vw', alignItems: 'center', alignSelf:'center' }} key={data.indexOf(elem)}>
+            <Card style={{ alignItems: 'center', alignSelf:'center' }} key={data.indexOf(elem)}>
                 <Card.Body>
                     <CardHeader
                         title={`Name: ${elem.name}`}
@@ -50,7 +50,7 @@ const fetchData = async () => {
                             {`Family of ${elem.no_of_family}`}
                         </CardText>
                         <CardText>
-                            {`Seeking funds for ${elem.approval}`}
+                            {`Seeking funds for ${elem.fund_breakdown}`}
                         </CardText>
                     </Card.Body>
                 </Card.Body>

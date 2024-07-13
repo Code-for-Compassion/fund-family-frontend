@@ -69,21 +69,21 @@ function InterestForm() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Register Your Interest</Modal.Title>
+          <Modal.Title> {t("register")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={onSubmit}>
             <Row>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="name" placeholder='Enter name' onChange={(e)=>{setname(e.target.value)}}
+              <Form.Label>{t("name")}</Form.Label>
+              <Form.Control type="text" name="name" placeholder={t("enterName")} onChange={(e)=>{setname(e.target.value)}}
               />
             </Form.Group>
             </Col>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>{t("email")}</Form.Label>
               <Form.Control
                 type="fund_url"
                 name="email"
@@ -97,22 +97,22 @@ function InterestForm() {
             <Row>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>Number of family members</Form.Label>
+              <Form.Label>{t("family")}</Form.Label>
               <Form.Control
                type="number"
                name="no_of_family"
-               placeholder='example: 3'
+               placeholder={t("exampleFam")}
                onChange={(e)=>{setNoF(e.target.value)}}
               />
             </Form.Group>
             </Col>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-              <Form.Label>Goal amount</Form.Label>
+              <Form.Label>{t("goal")}</Form.Label>
               <Form.Control
                type="number"
                name="raised_amount"
-               placeholder='example: $5000'
+               placeholder={t("example$")}
                onChange={(e)=>{setRm(e.target.value)}}
               />
             </Form.Group>
@@ -121,10 +121,10 @@ function InterestForm() {
             <Row>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
-              <Form.Label>General expense breakdown of these funds</Form.Label>
+              <Form.Label>{t("expenses")}</Form.Label>
               <Form.Control
               type="text"
-              placeholder='Estimated distribution of funds here'
+              placeholder={t("distribution")}
               name= "fund_breakdown"
               onChange={(e)=>{setFb(e.target.value)}}
               />
@@ -132,22 +132,22 @@ function InterestForm() {
             </Col>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
-              <Form.Label>Do you have family in Egypt?</Form.Label>
+              <Form.Label>{t("egyptFam")}</Form.Label>
               <Form.Check
                type="checkbox"
                name="Egypt_fam"
-               label='Yes'
+               label={t("yes")}
                onChange={(e)=>{(e.target.checked)? setEf(true): setEf(false)}}
               />
              </Form.Group>
              </Col>
              </Row>
              <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
-              <Form.Label>GoFundMe or GiverButters Link (if you have) </Form.Label>
+              <Form.Label>GoFundMe or GiverButters {t("link")} </Form.Label>
               <Form.Control
                type="url"
                name= "url"
-               placeholder='must be functioning url'
+               placeholder={t("url")}
                onChange={(e)=>{seturl(e.target.value)}}
               />
             </Form.Group>
@@ -155,7 +155,7 @@ function InterestForm() {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Questions, comments or additional information</Form.Label>
+              <Form.Label>{t("additional")}</Form.Label>
               <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
             </Form.Group>
             <Form.Group
@@ -171,10 +171,10 @@ function InterestForm() {
         </Modal.Body>
         <Modal.Footer>
         <Button variant="primary" type="submit">
-            Submit
+        {t("submit")}
           </Button>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+          {t("close")}
           </Button>
           {/* later validation */}
           {/* {!!formState.status && <div className="py-2">Current form status is: {formState.status}</div>} */}
