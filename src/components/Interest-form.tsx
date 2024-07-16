@@ -13,21 +13,26 @@ function InterestForm() {
 
   const [show, setShow] = useState(false);
   const [email, setemail] = useState("");
-  const [name, setname] = useState("");7 
+  const [name, setname] = useState("");
   const [nof, setNoF] = useState("");
   const [raised_amount, setRm] = useState("");
   const [fund_breakdown, setFb] = useState("");
   const [Egypt_fam, setEf] = useState(false);
   const [url, seturl] = useState("");
   const [approval] = useState("");
-
-
   const [comments, setcomment] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+//   function isValidUrl(string) {
+// }
+
   const API_ENDPOINT = 'https://fund-family-backend-production.up.railway.app/create_form/'
+
 
   const onSubmit = (e)=>{
     e.preventDefault();
@@ -53,11 +58,14 @@ function InterestForm() {
         console.log("THEN", response);
         console.log("THEN + DATA", response.data);
         console.log("success")
+        handleClose()
         
       })
       
     .catch(function (response) {
       console.log("Catch", response.data)
+      setErrorMessage("Please check inputs")
+      
     });
   
 
@@ -73,7 +81,7 @@ function InterestForm() {
           <Modal.Title> {t("register")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={onSubmit} className="interestForm">
             <Row>
             <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -166,19 +174,18 @@ function InterestForm() {
                name="approval"
                >
                 
-               </Form.Control>
+               </Form.Control>  
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" type="submit">
+    <p className="error"> {errorMessage} </p>
+        <Button variant="primary" type="submit" onClick={onSubmit}>
         {t("submit")}
           </Button>
           <Button variant="secondary" onClick={handleClose}>
           {t("close")}
           </Button>
-          {/* later validation */}
-          {/* {!!formState.status && <div className="py-2">Current form status is: {formState.status}</div>} */}
 
         </Modal.Footer>
       </Modal>

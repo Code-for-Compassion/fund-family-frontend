@@ -3,7 +3,10 @@
   margin: 0 auto;
   padding: 2rem, 0, 0, 0;
   text-align: center;
+  font-family: "Schoolbell", cursive;
+  ;
 }
+
 .App {
   width: 100vw;
 }
@@ -52,6 +55,12 @@
   color: #888;
 }
 
+.interestForm{
+  font-family: "Schoolbell", cursive;
+}
 
 
-
+.error {
+ padding-right: 80px;
+ color: red;
+}

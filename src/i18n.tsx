@@ -17,7 +17,7 @@ i18n
           header: "Slice Of Hope",
           submitMain: "Submit Aid Request",
           about: "About",
-          register: "Register your Resource Request Page",
+          register: "Request Resources Form",
           resources: "Resources",
           families: "Families in Need of Support",
           family: "Number of family members",

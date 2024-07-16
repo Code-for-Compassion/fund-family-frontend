@@ -18,7 +18,9 @@ function App() {
   const { t } = useTranslation();
 
   return (
+    
   <div className="App">
+  
   <h1>{t("header")}</h1>
       <img src={pic} alt="arms hug heart"/>
       <MainNav/>
