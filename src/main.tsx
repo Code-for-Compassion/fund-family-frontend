@@ -5,6 +5,7 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import "./i18n.tsx"
+import './App.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

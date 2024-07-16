@@ -8,7 +8,7 @@ function MainNav() {
   const { t } = useTranslation()
   return (
 
-<Navbar bg="light" data-bs-theme="light">
+<Navbar className="bg-body-tertiary justify-content-between">
 <Container>
 <NavbarBrand>
 <InterestForm/>

@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import { useTranslation } from "react-i18next";
+import "../App.css"
 
 
 function InterestForm() {
@@ -63,7 +64,7 @@ function InterestForm() {
   }
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="interestButton" onClick={handleShow}>
       {t("submitMain")}
       </Button>
 

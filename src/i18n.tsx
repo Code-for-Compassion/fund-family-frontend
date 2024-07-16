@@ -35,7 +35,7 @@ i18n
           exampleFam: "Example: 3",
           yes: "yes",
           submit: "Submit",
-          close: ""
+          close: "Close"
 ,        }
       },
       ar:{
@@ -61,12 +61,7 @@ i18n
           exampleFam: "مثال: 3",
           yes:"شوك",
           sumbit: "يُقدِّم",
-          close: "يغلق"
-
-
-
-
-
+          close: "يغلق",
 
 
         }

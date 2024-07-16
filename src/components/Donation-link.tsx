@@ -3,6 +3,7 @@ import { Card, CardHeader, CardImg, CardText, Col, Container, Row } from 'react-
 // import Button from 'react-bootstrap/Button';
 // import CardBody from 'react-bootstrap';
 import axios from 'axios';
+import "../App.css"
 
 
 function DonationLink() {
@@ -31,13 +32,13 @@ const fetchData = async () => {
 
 
   return (
-    <Container>
+
     <Row>
     <Col>
-    <Card
-    >
+ 
+<Container>
         {data.map((elem) => (
-            <Card style={{ alignItems: 'center', alignSelf:'center' }} key={data.indexOf(elem)}>
+            <Card className="donationCards" key={data.indexOf(elem)}>
                 <Card.Body>
                     <CardHeader
                         title={`Name: ${elem.name}`}
@@ -56,10 +57,10 @@ const fetchData = async () => {
                 </Card.Body>
              </Card>
         ))}
-    </Card>
+</Container>
     </Col>    
     </Row>
-    </Container>
+   
     )}
 
 export default DonationLink;
