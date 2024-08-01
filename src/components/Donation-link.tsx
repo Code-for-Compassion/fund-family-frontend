@@ -4,7 +4,7 @@ import { Card, CardHeader, CardImg, CardText, Col, Container, Row } from 'react-
 // import CardBody from 'react-bootstrap';
 import axios from 'axios';
 import "../App.css"
-
+import '../index.css'
 
 function DonationLink() {
 

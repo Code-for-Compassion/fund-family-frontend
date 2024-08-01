@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import { useTranslation } from "react-i18next";
 import "../App.css"
-
+import '../index.css'
 
 function InterestForm() {
   const { t } = useTranslation();
@@ -22,6 +22,7 @@ function InterestForm() {
   const [approval] = useState("");
   const [comments, setcomment] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [validated, setValidated] = useState(false);
 
   
   const handleClose = () => setShow(false);
@@ -38,6 +39,13 @@ function InterestForm() {
     e.preventDefault();
     console.log(email)
     console.log("email")
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    setValidated(true);
 
     axios({
       method: 'post',
@@ -81,17 +89,18 @@ function InterestForm() {
           <Modal.Title> {t("register")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={onSubmit} className="interestForm">
+          <Form noValidate validated={validated} onSubmit={onSubmit} className="interestForm">
             <Row>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="validate1">
               <Form.Label>{t("name")}</Form.Label>
               <Form.Control type="text" name="name" placeholder={t("enterName")} onChange={(e)=>{setname(e.target.value)}}
               />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             </Col>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+            <Form.Group className="mb-3" controlId="validate2">
               <Form.Label>{t("email")}</Form.Label>
               <Form.Control
                 type="fund_url"
@@ -100,12 +109,15 @@ function InterestForm() {
                 autoFocus
                 onChange={(e)=>{setemail(e.target.value)}}
               />
-            </Form.Group>
+            <Form.Control.Feedback type="invalid">
+              Valid email required
+            </Form.Control.Feedback>           
+             </Form.Group>
             </Col>
             </Row>
             <Row>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+            <Form.Group className="mb-3" controlId="validate3">
               <Form.Label>{t("family")}</Form.Label>
               <Form.Control
                type="number"
@@ -113,10 +125,13 @@ function InterestForm() {
                placeholder={t("exampleFam")}
                onChange={(e)=>{setNoF(e.target.value)}}
               />
+            <Form.Control.Feedback type="invalid">
+              How many individuals in family
+            </Form.Control.Feedback>  
             </Form.Group>
             </Col>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+            <Form.Group className="mb-3" controlId="validate4">
               <Form.Label>{t("goal")}</Form.Label>
               <Form.Control
                type="number"
@@ -124,12 +139,15 @@ function InterestForm() {
                placeholder={t("example$")}
                onChange={(e)=>{setRm(e.target.value)}}
               />
+             <Form.Control.Feedback type="invalid">
+              Include a goal amount
+            </Form.Control.Feedback> 
             </Form.Group>
             </Col>
             </Row>
             <Row>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
+            <Form.Group className="mb-3" controlId="validate5">
               <Form.Label>{t("expenses")}</Form.Label>
               <Form.Control
               type="text"
@@ -137,10 +155,13 @@ function InterestForm() {
               name= "fund_breakdown"
               onChange={(e)=>{setFb(e.target.value)}}
               />
+             <Form.Control.Feedback type="invalid">
+              Required
+            </Form.Control.Feedback> 
             </Form.Group>
             </Col>
             <Col>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
+            <Form.Group className="mb-3" controlId="validate6">
               <Form.Label>{t("egyptFam")}</Form.Label>
               <Form.Check
                type="checkbox"
@@ -151,7 +172,7 @@ function InterestForm() {
              </Form.Group>
              </Col>
              </Row>
-             <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
+             <Form.Group className="mb-3" controlId="validate7">
               <Form.Label>GoFundMe or GiverButters {t("link")} </Form.Label>
               <Form.Control
                type="url"
@@ -159,10 +180,13 @@ function InterestForm() {
                placeholder={t("url")}
                onChange={(e)=>{seturl(e.target.value)}}
               />
+              <Form.Control.Feedback type="invalid">
+             Must be valid URL
+            </Form.Control.Feedback> 
             </Form.Group>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
+              controlId="validate8"
             >
               <Form.Label>{t("additional")}</Form.Label>
               <Form.Control name="comments" as="textarea" rows={3}  onChange={(e)=>{setcomment(e.target.value)}}/>
@@ -179,7 +203,6 @@ function InterestForm() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-    <p className="error"> {errorMessage} </p>
         <Button variant="primary" type="submit" onClick={onSubmit}>
         {t("submit")}
           </Button>

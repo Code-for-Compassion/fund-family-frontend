@@ -3,17 +3,55 @@
   margin: 0 auto;
   padding: 2rem, 0, 0, 0;
   text-align: center;
-  font-family: "Schoolbell", cursive;
+ font-family: "Playwrite DE Grund", cursive;
+
+
   ;
 }
 
 .App {
+  color: #0c0b0b !important;
+  /* background-image:linear-gradient(to right top, #f2d7e1, #f2d0dd, #f4d3df,#FBCEDE) ; */
   width: 100vw;
+  background:
+  radial-gradient(farthest-side at top left,
+  #F2727D,transparent),
+  radial-gradient(farthest-side at bottom left,
+  #f8d1df,transparent),
+  radial-gradient(farthest-corner at bottom right,
+  #DBA1A4,transparent) 
+}
+#logo {
+  height: 120px;
+  width: 120px;
+}
+.mainNav {
+  background-image:linear-gradient(to right, rgb(68, 205, 119, .5), rgb(205, 246, 215, .5)) !important;
+
+}
+.btn-primary {
+  color: #080706 !important;
+  background-image: linear-gradient(to right, #75e285, #bcefb7);
+  background-color: #2e7903;
+  border-color: #6fc419 !important; 
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  box-shadow: 3px 3px 5px rgba(20, 97, 9, 0.2);
+  background-image: linear-gradient(to right, #61bd6f, #a0db9b);
+  background-color: #f9fcf8;
+  border-color: #81f909 !important; 
+
+}
+.btn-Container{
+margin-top: 0;
+margin-left: 0;}
+
+.card-body{
+  background-color: #f4e4ea;
+
 }
 
-.interestButton {
-  background-color: rgb(233, 103, 125) !important;
-}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -56,7 +94,7 @@
 }
 
 .interestForm{
-  font-family: "Schoolbell", cursive;
+  font-family: "Playwrite DE Grund", cursive;
 }
 
 

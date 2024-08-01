@@ -8,7 +8,7 @@ function MainNav() {
   const { t } = useTranslation()
   return (
 
-<Navbar className="bg-body-tertiary justify-content-between">
+<Navbar className="mainNav justify-content-between">
 <Container>
 <NavbarBrand>
 <InterestForm/>
@@ -17,7 +17,6 @@ function MainNav() {
   <Nav.Link href="/">{t("families")}</Nav.Link>
   <Nav.Link href="/Resources">{t("resources")}</Nav.Link>
   <Nav.Link href="/About">{t("about")}</Nav.Link>
-  <LanguageToggle/> 
 </Nav>
 </Container>
 </Navbar>

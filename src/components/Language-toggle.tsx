@@ -5,6 +5,7 @@ import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import "../App.css"
+import '../index.css'
 
 
 import { Button } from "react-bootstrap";
@@ -33,7 +34,7 @@ const LanguageToggle = () => {
   return (
 <div className="btn-Container">
     {languages.map((lng) => {
-      return <Button variant="light" key={lng.code ===i18n.language? "selected": ""} onClick={()=> changeLanguage(lng.code)}>
+      return <Button variant="primary" size="sm" key={lng.code ===i18n.language? "selected": ""} onClick={()=> changeLanguage(lng.code)}>
         {lng.lang}
       </Button>
     })}

@@ -60,7 +60,7 @@ i18n
           example$: "مثال: 5000 دولا",
           exampleFam: "مثال: 3",
           yes:"شوك",
-          sumbit: "يُقدِّم",
+          submit: "يُقدِّم",
           close: "يغلق",
 
 
