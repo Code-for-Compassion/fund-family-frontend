@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import './App.scss';
 import { Container, Navbar, Nav, NavbarBrand, NavDropdown } from 'react-bootstrap';
 import './App.css'
@@ -12,7 +12,7 @@ import watermelon from './assets/watermelon.svg';
 import { useTranslation } from "react-i18next";
 import { Routes, Route } from 'react-router-dom';
 import DonationLink from './components/Donation-link';
-import About from './About-Us';
+import About from './components/About-Us';
 import Resources from './components/Resources'
 import LanguageToggle from './components/Language-toggle';
 
